@@ -39,7 +39,6 @@ A sleek, responsive weather application that delivers real-time weather updates,
 |------------|-----------|
 | ![Light Mode](./screenshots/light-ss.png) | ![Dark Mode](./screenshots/dark-ss.png) |
 
-> 📂 Place your screenshots in a `screenshots/` folder at root for easy access.
 
 ---
 
