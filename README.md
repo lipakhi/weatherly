@@ -6,7 +6,7 @@ A sleek, responsive weather application that delivers real-time weather updates,
 
 ## 🚀 Live Demo
 
-🌐 [Check it out on Vercel]()
+🌐 [Check it out on Vercel](https://weatherly-lipakhis-projects.vercel.app/)
 
 ---
 
