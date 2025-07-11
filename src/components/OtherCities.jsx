@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
-const cities = ["New York", "Dubai", "Tokyo", "Toronto"];
+const cities = ["New York", "London", "Tokyo", "Mumbai"];
 
 const OtherCities = () => {
   const [cityData, setCityData] = useState([]);
@@ -72,37 +72,43 @@ const OtherCities = () => {
         {cityData.map((city, index) => (
           <div
             key={index}
-            className="relative m-1 group bg-white/30 dark:bg-white/10 backdrop-blur-lg rounded-2xl p-3 text-left shadow border border-white/20 dark:border-white/10 hover:scale-105 transition duration-300 flex items-center justify-between opacity-0 animate-slide-up"
+            className="relative m-1 group rounded-2xl p-3 text-left shadow border border-white/20 dark:border-white/10 opacity-0 animate-slide-up"
             style={{
               animationDelay: `${index * 150}ms`,
               animationFillMode: "forwards",
             }}
           >
-            {/* Left: Temp + City Info */}
-            <div className="flex flex-col items-start gap-1.5">
-              <p className="text-lg font-bold text-gray-900 dark:text-white">
-                {city.temp}°
-              </p>
-              <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                {city.name}, {city.country}
-              </p>
-              <p className="text-xs capitalize text-muted-light dark:text-muted-dark">
-                {city.description}
-              </p>
-            </div>
-
-            {/* Right: Icon + High/Low */}
-            <div className="flex flex-col items-center">
-              <div className="bg-white/20 dark:bg-white/10 p-1 rounded-full">
-                <img
-                  src={`https://openweathermap.org/img/wn/${city.icon}@2x.png`}
-                  alt="weather icon"
-                  className="w-8 h-8"
-                />
+            {/* Background with backdrop blur - separate div */}
+            <div className="absolute inset-0 bg-white/30 dark:bg-white/10 backdrop-blur-lg rounded-2xl group-hover:bg-white/40 dark:group-hover:bg-white/20 transition-colors duration-300" />
+            
+            {/* Content container with transform */}
+            <div className="relative flex items-center justify-between transform transition duration-300 group-hover:scale-[1.01]">
+              {/* Left: Temp + City Info */}
+              <div className="flex flex-col items-start gap-1.5">
+                <p className="text-lg font-bold text-gray-900 dark:text-white">
+                  {city.temp}°
+                </p>
+                <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  {city.name}, {city.country}
+                </p>
+                <p className="text-xs capitalize text-muted-light dark:text-muted-dark">
+                  {city.description}
+                </p>
               </div>
-              <p className="text-xs pt-2 text-muted-light dark:text-muted-dark">
-                H{city.high}° L{city.low}°
-              </p>
+
+              {/* Right: Icon + High/Low */}
+              <div className="flex flex-col items-center">
+                <div className="bg-white/20 dark:bg-white/10 p-1 rounded-full">
+                  <img
+                    src={`https://openweathermap.org/img/wn/${city.icon}@2x.png`}
+                    alt="weather icon"
+                    className="w-8 h-8"
+                  />
+                </div>
+                <p className="text-xs pt-2 text-muted-light dark:text-muted-dark">
+                  H{city.high}° L{city.low}°
+                </p>
+              </div>
             </div>
           </div>
         ))}
